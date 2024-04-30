@@ -1,10 +1,15 @@
-import WordMark from '@/components/WordMark';
+import NavBar from '@/components/NavBar';
+import { createClient } from '@/prismicio';
+import { PrismicNextLink } from '@prismicio/next';
 
-const Header = () => {
+const Header = async () => {
+	const client = createClient();
+	const settings = await client.getSingle('settings');
+
 	return (
-		<div>
-			<WordMark />
-		</div>
+		<header>
+			<NavBar settings={settings} />
+		</header>
 	);
 };
 
